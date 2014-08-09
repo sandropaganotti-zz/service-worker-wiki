@@ -19,4 +19,4 @@ and the possibilities, of this technology.
 Working Demo
 ============
 
-You can experiment this POC here: 
+You can experiment this POC here: [https://sandropaganotti.github.io/service-worker-wiki/](https://sandropaganotti.github.io/service-worker-wiki/)
