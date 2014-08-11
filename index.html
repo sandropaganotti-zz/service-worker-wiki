@@ -18,7 +18,7 @@
     
     <p id="swinstalled" style="display:none;">
       Service Worker succesfully installed, just point the browser to a custom URL<br/>
-      within this domain (eg: <a href="/startPoint">/startPoint</a>) to begin edit the wiki. All the pages <br/>
+      within this domain (eg: <a href="./startPoint">./startPoint</a>) to begin edit the wiki. All the pages <br/>
       are volatile and persisted only until the browser is open but until so you can <br/>
       open as many tabs as you want and all of them will behave the same. 
     </p>
@@ -30,17 +30,18 @@
       button.style.display = navigator.serviceWorker ? 'block' : 'none';
       
       document.querySelector('button').addEventListener('click', function() {
-        navigator.serviceWorker.register('./worker.js')
-          .then(function(serviceWorker) {
-            serviceWorker.addEventListener('statechange', function(event) {
-              if(event.target.state === 'activated'){
-                button.style.display = 'none';
-                paragraph.style.display = 'block';
-              }
-            });
-          }, function(why) {
-            console.log('Failed to install:' + why);
+        navigator.serviceWorker.register('./worker.js', {
+          scope: './'
+        }).then(function(serviceWorker) {
+          serviceWorker.addEventListener('statechange', function(event) {
+            if(event.target.state === 'activated'){
+              button.style.display = 'none';
+              paragraph.style.display = 'block';
+            }
           });
+        }, function(why) {
+          console.log('Failed to install:' + why);
+        });
       });
     </script>
   </body>
