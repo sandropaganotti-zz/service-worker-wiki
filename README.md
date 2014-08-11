@@ -13,8 +13,9 @@ But there are other, maybe less conventional, ways to take advantage of this tec
 one of them is shown here: a Wiki engine that leverage on the power of a Service Worker 
 to allow the user to create their own pages. 
 
-This, is only a Proof-of-concept but it might be useful to better understand the dynamics,
-and the possibilities, of this technology. 
+This, is only a Proof-of-concept but it might be useful to better understand the dynamics, and the possibilities, of this technology. 
+
+Kudos to +jakearchibald for IndexedDB support.
 
 Working Demo
 ============
