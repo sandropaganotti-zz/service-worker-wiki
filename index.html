@@ -6,9 +6,14 @@
   <body>
     <h1>A Simple Wiki</h1>
     <p>
-      This is a simple Proof-Of-Concept stateless wiki built using<br/>
+      This is a simple Proof-Of-Concept wiki built using<br/>
       the <a href="http://slightlyoff.github.io/ServiceWorker/spec/service_worker/" target="_blank">service workers api</a>, to test it you can use the latest <a href="http://www.google.com/intl/it/chrome/browser/canary.html" target="_blank">Chrome Canary (v38)</a><br/>
-      enabling the flag <a href="chrome://flags/#enable-experimental-web-platform-features" target="_blank">'Experimental Platform Features"</a>.
+      enabling the flag 'Experimental Platform Features"<br/>
+      (chrome://flags/#enable-experimental-web-platform-features).
+    </p>
+    <p>
+      The pages created are stored in the browser using IndexedDB<br/> (chrome://indexeddb-internals/) and persisted 
+      between sessions<br/> (kudos to <a href="https://twitter.com/jaffathecake" target="_blank">Jake Archibald</a>).
     </p>
     <p>
       Service Worker Support: <strong id="swsupport"></strong>
