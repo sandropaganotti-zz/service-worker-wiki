@@ -30,17 +30,18 @@
       button.style.display = navigator.serviceWorker ? 'block' : 'none';
       
       document.querySelector('button').addEventListener('click', function() {
-        navigator.serviceWorker.register('./worker.js')
-          .then(function(serviceWorker) {
-            serviceWorker.addEventListener('statechange', function(event) {
-              if(event.target.state === 'activated'){
-                button.style.display = 'none';
-                paragraph.style.display = 'block';
-              }
-            });
-          }, function(why) {
-            console.log('Failed to install:' + why);
+        navigator.serviceWorker.register('./worker.js', {
+          scope: './'
+        }).then(function(serviceWorker) {
+          serviceWorker.addEventListener('statechange', function(event) {
+            if(event.target.state === 'activated'){
+              button.style.display = 'none';
+              paragraph.style.display = 'block';
+            }
           });
+        }, function(why) {
+          console.log('Failed to install:' + why);
+        });
       });
     </script>
   </body>
