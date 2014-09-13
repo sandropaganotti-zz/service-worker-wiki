@@ -12,33 +12,33 @@
       (chrome://flags/#enable-experimental-web-platform-features).
     </p>
     <p>
-      The pages created are stored in the browser using IndexedDB<br/> (chrome://indexeddb-internals/) and persisted 
+      The pages created are stored in the browser using IndexedDB<br/> (chrome://indexeddb-internals/) and persisted
       between sessions<br/> (kudos to <a href="https://twitter.com/jaffathecake" target="_blank">Jake Archibald</a>).
     </p>
     <p>
       Service Worker Support: <strong id="swsupport"></strong>
     </p>
-    
+
     <button id="swinstall" >Install the Service Worker to start the wiki</button>
-    
+
     <p id="swinstalled" style="display:none;">
       Service Worker succesfully installed, just point the browser to a custom URL<br/>
       within this domain (eg: <a href="./startPoint">./startPoint</a>) to begin edit the wiki. All the pages <br/>
       are volatile and persisted only until the browser is open but until so you can <br/>
-      open as many tabs as you want and all of them will behave the same. 
+      open as many tabs as you want and all of them will behave the same.
     </p>
-     
+
     <script>
       document.querySelector('#swsupport').textContent = navigator.serviceWorker ? 'enabled' : 'disabled';
       var button = document.querySelector('#swinstall');
       var paragraph = document.querySelector('#swinstalled');
       button.style.display = navigator.serviceWorker ? 'block' : 'none';
-      
+
       document.querySelector('button').addEventListener('click', function() {
         navigator.serviceWorker.register('./worker.js', {
           scope: './'
-        }).then(function(serviceWorker) {
-          serviceWorker.addEventListener('statechange', function(event) {
+        }).then(function(registration) {
+          registration.installing.addEventListener('statechange', function(event) {
             if(event.target.state === 'activated'){
               button.style.display = 'none';
               paragraph.style.display = 'block';
