@@ -33,8 +33,8 @@ this.addEventListener('fetch', function(e) {
               return blobHTML;
             }
             return "<h2>New page</h2><form action='./savepage'><input name='url' " +
-                   "value='"+e.request.url+"' readonly><br/><textarea rows='30' cols='80'" +
-                   "name='body' required></textarea><br/><input type='submit'></form>";
+                   "value='"+e.request.url+"' readonly><br/><textarea rows='10' cols='50'" +
+                   "name='body'></textarea><br/><input type='submit'></form>";
           })
         );
       }
@@ -51,7 +51,7 @@ this.addEventListener('fetch', function(e) {
     }).then(function(blobHTML) {
       blobHTML += "<h2>Create a new page</h2>";
       blobHTML += "Point the browser to a new URL within this domain";
-      
+
       blobHTML += "<h2>Remove the service worker</h2>";
       blobHTML += "Visit: chrome://serviceworker-internals/";
 
